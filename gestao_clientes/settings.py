@@ -31,14 +31,10 @@ ALLOWED_HOSTS = ['gestao-clientes2.herokuapp.com', 'localhost', '127.0.0.1']
 
 INTERNAL_IPS = ['127.0.0.1']
 
-ADMINS = [('Gregory', 'django@gregorypacheco.com.br'),]
+ADMINS = [('rob', 'r@r.com'),]
 # Application definition
 
 INSTALLED_APPS = [
-    # 'grappelli',
-    # 'suit',
-    # 'jet.dashboard',
-    # 'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -180,7 +176,7 @@ STATIC_URL = '/static/'
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = 25
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = 'django2018'
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = False
 
 # STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
