@@ -24,16 +24,23 @@ def my_logout(request):
 
 
 class HomePageView(TemplateView):
+    '''
+    Tipo class based view herda de TemplateView
+    '''
     template_name = 'home2.html'
 
     def get_context_data(self, **kwargs):
+        # super invoca get_context_data de super que é TemplateView
+        # Template view por sua vez em sua definição possui ContextMixin em sua definição
         context = super().get_context_data(**kwargs)
-        context['minha_variavel'] = 'Ola, seja bem vindo ao curso de Django advanced'
+        context['minha_variavel'] = 'Ola, seja bem vindo ao curso de Django advanced.Frase recebida por contexto'
         return context
 
 
 class MyView(View):
-
+    '''
+    Tipo class based view mais genérica póssivel herda de View
+    '''
     def get(self, request, *args, **kwargs):
         response = render_to_response('home3.html')
         response.set_cookie('color', 'blue', max_age=1000)
