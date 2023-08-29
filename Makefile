@@ -13,7 +13,8 @@ migrate:
 	python manage.py migrate
 
 createsuperuser:
-	python manage.py createsuperuser --username rob --email r@r.com 
+	python manage.py createsuperuser  
+	# --username rob --email r@r.com 
 
 start:
 	python manage.py runserver 0.0.0.0:8000

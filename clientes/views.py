@@ -64,6 +64,11 @@ def persons_delete(request, id):
 
 
 class PersonList(LoginRequiredMixin, ListView):
+    '''
+    Classe herda de List view e de LoginRequiredMixin   
+
+
+    '''
     model = Person
 
     def get_context_data(self, **kwargs):
