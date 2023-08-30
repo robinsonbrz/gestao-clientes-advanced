@@ -112,18 +112,42 @@ class PersonCreate(LoginRequiredMixin, CreateView):
 
 
 class PersonUpdate(LoginRequiredMixin, UpdateView):
+    '''
+    CBV UpdateView relates to a form injects a form with these fields on template
+    used for update an specific item 
+    receives an id on urls
+    path('person_update/<int:pk>/', PersonUpdate.as_view(), name='person_update_cbv'),
+    Besides that it loads the form with the model data for this specific id
+
+    '''
     model = Person
     fields = ['first_name', 'last_name', 'age', 'salary', 'bio', 'photo']
     success_url = reverse_lazy('person_list_cbv')
 
 
 class PersonDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    '''
+    CBV UpdateView 
+    used for update an specific item 
+    receives an id on urls
+    path('person_delete/<int:pk>/', PersonDelete.as_view(), name='person_delete_cbv'),
+    Needs a form with a delete button to delete his specific id
+
+    '''
     permission_required = ('clientes.deletar_clientes',)
 
     model = Person
     # success_url = reverse_lazy('person_list_cbv')
 
     def get_success_url(self):
+        '''
+        Esse método pode ser utilizado na maioria das CBV e é executado no sucesso 
+        da CBV
+        to determine the URL where the user should be redirected after a successful action, 
+        such as submitting a form or saving an object.
+        This method helps manage the flow of the user interface and provides a
+        seamless experience for users interacting with your web application.
+        '''
         return reverse_lazy('person_list_cbv')
 
 
