@@ -85,8 +85,11 @@ class PersonList(LoginRequiredMixin, ListView):
         return context
 
 class PersonDetail(LoginRequiredMixin, DetailView):
+    '''
+    CBV DetailView
+    Utilizada para receber detalhes de um modelo
+    '''
     model = Person
-
     def get_object(self, queryset=None):
         pk = self.kwargs.get(self.pk_url_kwarg)
         return Person.objects.select_related('doc').get(id=pk)
@@ -100,6 +103,9 @@ class PersonDetail(LoginRequiredMixin, DetailView):
 
 
 class PersonCreate(LoginRequiredMixin, CreateView):
+    '''
+    CBV relates to a form injects a form with these fields on template
+    '''
     model = Person
     fields = ['first_name', 'last_name', 'age', 'salary', 'bio', 'photo']
     success_url = '/clientes/person_list'
