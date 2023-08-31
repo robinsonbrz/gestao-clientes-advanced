@@ -77,8 +77,11 @@ ROOT_URLCONF = 'gestao_clientes.urls'
 
 TEMPLATES = [
     {
+        # a linha abaixo seria para configurar o Jinja2 se necessário
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # no diretório templates global na raiz do projeto  
         'DIRS': ['templates'],
+        # a linha abaixo é para termos um template para cada app
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
