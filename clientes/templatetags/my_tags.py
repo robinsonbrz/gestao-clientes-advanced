@@ -10,8 +10,9 @@ def current_time(context, format_string):
     Template tag personalizado
     Retorna a data e hora atual
     exemplo de uso :
-
-    {{ current_time:"%d/%m/%Y %H:%M:%S" }}
+    no template.html
+    {% carregar com load mytags %}
+             {{ current_time:"%d/%m/%Y %H:%M:%S" }}
     '''
     return datetime.now().strftime(format_string)
 
