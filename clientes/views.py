@@ -153,13 +153,21 @@ class PersonDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
 
 class ProdutoBulk(View):
     def get(self, request):
+        # tudo se inicia com uma lista de dados de qualquer procedência. Excel...
         produtos = ['Banana', 'Maca', 'Limao', 'Laranja', 'Pera', 'Melancia']
+        # iniciamos uma lista que será enviada ao banco em uma só operação
         list_produtos = []
 
         for produto in produtos:
+            # criamos pbjetos do tipop produto
             p = Produto(descricao=produto, preco=10)
+            # acrescentamos os objetos um a um em uma lista
             list_produtos.append(p)
 
+        # Enviamos todos os objetos para o banco de uma vez
+        # Nesse caso em apenas uma query com todos os dados para o banco
+        # O oposto disso seria objects.save() que salva um único objeto
+        # ou seja cria uma query para cada save
         Produto.objects.bulk_create(list_produtos)
 
         return HttpResponse('Funcionou')
