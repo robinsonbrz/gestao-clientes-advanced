@@ -1,23 +1,27 @@
-from django import template
-from datetime import datetime
-
-register = template.Library()
-
-
-@register.simple_tag(takes_context=True)
-def current_time(context, format_string):
+@register.filter
+def arredonda(value, casas):
     '''
     Template tag personalizado
-    Retorna a data e hora atual
+    Arredonda o valor para o número de casas informado
     exemplo de uso :
-    no template.html
-    {% carregar com load mytags %}
-             {{ current_time:"%d/%m/%Y %H:%M:%S" }}
+    numero a ser arredondado : 123.6548
+    parâmetro numero de casas : 2
+    resultado : 123.65
+     
+    {{ 123.6548| arredonda:2}}
     '''
-    return datetime.now().strftime(format_string)
+    return round(value, casas)
 
-
-@register.simple_tag
-def footer_message():
-    return 'Desenvolvimento web com Django 2.0.2'
-
+@register.filter
+def soma(n1, n2):
+    """
+    Template tag personalizado
+    Soma dois números
+    exemplo de uso :
+    numero 1 : 10
+    numero 2 : 20
+    resultado : 30
+     
+    {{ 10| soma:20}}
+    """
+    return n1 + n2
