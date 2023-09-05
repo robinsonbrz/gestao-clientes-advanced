@@ -92,8 +92,10 @@ class PersonDetail(LoginRequiredMixin, DetailView):
     model = Person
     def get_object(self, queryset=None):
         pk = self.kwargs.get(self.pk_url_kwarg)
+        # sobrescrevendo o método com select_related aumentando a performance
         return Person.objects.select_related('doc').get(id=pk)
-
+    
+    # sobrescrevendo o método get_context_data  de contextmixin
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
