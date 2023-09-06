@@ -36,21 +36,21 @@ class Person(models.Model):
         data = {'cliente': self.first_name}
         plain_text = render_to_string('clientes/emails/novo_cliente.txt', data)
         html_email = render_to_string('clientes/emails/novo_cliente.html', data)
-        # send_mail(
-        #     'Novo cliente cadastrado',
-        #     plain_text,
-        #     'django@gregorypacheco.com.br',
-        #     ['django@gregorypacheco.com.br'],
-        #     html_message=html_email,
-        #     fail_silently=False,
-        # )
+        send_mail(
+            'Novo cliente cadastrado',
+            plain_text,
+            'django@gregorypacheco.com.br',
+            ['django@gregorypacheco.com.br'],
+            html_message=html_email,
+            fail_silently=False,
+        )
 
-        # mail_admins(
-        #     'Novo cliente cadastrado',
-        #     plain_text,
-        #     html_message=html_email,
-        #     fail_silently=False,
-        # )
+        mail_admins(
+            'Novo cliente cadastrado',
+            plain_text,
+            html_message=html_email,
+            fail_silently=False,
+        )
 
         message1 = (
             'Subject here', 'Here is the message', 'django@gregorypacheco.com.br',
