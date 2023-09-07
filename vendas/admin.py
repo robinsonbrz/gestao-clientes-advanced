@@ -11,12 +11,23 @@ class ItemPedidoInline(admin.TabularInline):
 
 class VendaAdmin(admin.ModelAdmin):
     readonly_fields = ('valor',)
+    '''
+    O autocomplete_fields é um campo que faz com que o campo de busca seja automaticamente preenchido
+    como um select2
+    '''
     autocomplete_fields = ("pessoa",)
     list_filter = ('pessoa__doc', 'desconto')
     list_display = ('id', 'numero', 'pessoa', 'nfe_emitida', 'valor')
     search_fields = ('id', 'pessoa__first_name', 'pessoa__doc__num_doc')
     actions = [nfe_emitida, nfe_nao_emitida]
     inlines = [ItemPedidoInline]
+
+    '''
+    adicionando m2m com produtos em admin
+    
+    '''
+    filter_vertical = ['produtos']
+
 
     def total(self, obj):
         return obj.get_total()
