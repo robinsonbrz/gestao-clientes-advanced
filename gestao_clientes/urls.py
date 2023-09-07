@@ -44,6 +44,11 @@ if settings.DEBUG:
     ] + urlpatterns
 
 
+"""
+- admin.site.site_header define o cabeçalho da área administrativa.
+- admin.site.index_title define o título da página inicial da área administrativa.
+- admin.site.site_title define o título da área administrativa em geral.
+"""
 admin.site.site_header = 'Gestao de Clientes'
 admin.site.index_title = 'Administracao'
 admin.site.site_title = 'Seja bem vindo ao Gestao de Clientes'
