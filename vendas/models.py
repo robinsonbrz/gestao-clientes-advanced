@@ -46,9 +46,12 @@ class ItemDoPedido(models.Model):
     def __str__(self):
         return self.venda.numero + ' - ' + self.produto.descricao
 
-
 @receiver(post_save, sender=ItemDoPedido)
 def update_vendas_total(sender, instance, **kwargs):
+    '''
+    Utilizando o Django signals para atualizar o valor total da venda
+    quando um item do pedido é adicionado ou removido.
+    '''
     instance.venda.calcular_total()
 
 
