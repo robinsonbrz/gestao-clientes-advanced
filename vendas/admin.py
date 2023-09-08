@@ -5,6 +5,8 @@ from .actions import nfe_emitida, nfe_nao_emitida
 
 
 class ItemPedidoInline(admin.TabularInline):
+    # TabularInLine é um tipo de inline que permite que os campos sejam exibidos em uma tabela
+    # como itens de pedido e link para janela many to many dos produtos
     model = ItemDoPedido
     extra = 1
 
@@ -20,6 +22,8 @@ class VendaAdmin(admin.ModelAdmin):
     list_display = ('id', 'numero', 'pessoa', 'nfe_emitida', 'valor')
     search_fields = ('id', 'pessoa__first_name', 'pessoa__doc__num_doc')
     actions = [nfe_emitida, nfe_nao_emitida]
+
+    # Adicionando um inline para os itens de pedido
     inlines = [ItemPedidoInline]
 
     '''
