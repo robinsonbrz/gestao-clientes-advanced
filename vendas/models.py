@@ -25,6 +25,13 @@ class Venda(models.Model):
         )
 
     def calcular_total(self):
+        '''
+        Using aggregate Sum 
+        and F expressions 
+        
+        mixed types requires to define the output_field
+
+        '''
         tot = self.itemdopedido_set.all().aggregate(
             tot_ped=Sum((F('quantidade') * F('produto__preco')) - F('desconto'), output_field=FloatField())
         )['tot_ped'] or 0
