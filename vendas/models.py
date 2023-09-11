@@ -42,6 +42,10 @@ class Venda(models.Model):
 
     def __str__(self):
         return self.numero
+    '''
+    - Annotate   - adicionar colunas computadas
+    - Aggregate - retorna um único valor -soma - media... 
+    '''
 
 
 class ItemDoPedido(models.Model):
