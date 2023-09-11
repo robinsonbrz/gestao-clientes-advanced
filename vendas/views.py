@@ -15,6 +15,10 @@ class DashboardView(View):
 
     def get(self, request):
         data = {}
+        '''
+        Foram criados managers em managers.py que chamam aggregates min, sum, avg
+        para simplificar o código
+        '''
         data['media'] = Venda.objects.media()
         data['media_desc'] = Venda.objects.media_desconto()
         data['min'] = Venda.objects.min()
