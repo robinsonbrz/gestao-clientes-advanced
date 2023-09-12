@@ -7,6 +7,8 @@ from .forms import ItemPedidoForm
 
 
 class DashboardView(View):
+    # sobrescrevendo o método dispatch que é o primeiro da class based view
+    # para que ele faça a verificação de permissão do usuario
     def dispatch(self, request, *args, **kwargs):
         if not request.user.has_perm('vendas.ver_dashboard'):
             return HttpResponse('Acesso negado, voce precisa de permissao!')
