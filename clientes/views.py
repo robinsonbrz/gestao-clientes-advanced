@@ -27,6 +27,9 @@ def persons_list(request):
 
 @login_required
 def persons_new(request):
+    # verificando tipo de permissão do usuário logado
+    # app clientes permissão de add modleo Person
+    # checando manualmente
     if not request.user.has_perm('clientes.add_person'):
         return HttpResponse('Nao autorizado')
     elif not request.user.is_superuser:
