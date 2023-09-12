@@ -139,6 +139,7 @@ class PersonDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     Needs a form with a delete button to delete his specific id
 
     '''
+    # descrevendo o tipo de permissão necessária para PermissionRequiredMixin
     permission_required = ('clientes.deletar_clientes',)
 
     model = Person
