@@ -11,6 +11,9 @@ Nesse caso o field nfe_emitida
 def nfe_emitida(modeladmin, request, queryset):
     '''
     Define nota fiscal emitida True se usuário tiver permissão
+    Abaixo uma permissão personalizada setar_nfe
+    criada em Meta models Vendas
+    Mesmo que seja supaer_user nãso consegue se não tiver esta permissão
     '''
     if request.user.has_perm('vendas.setar_nfe'):
         queryset.update(nfe_emitida=True)

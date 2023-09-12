@@ -17,6 +17,11 @@ class Venda(models.Model):
 
     objects = VendaManager()
 
+    '''
+    Criando permissões personalizadas no Django
+    makemigrations  migrate e no admin as novas permissões estarão disponíveis
+    Depois ir ao admin ou nesse caso no actions
+    '''
     class Meta:
         permissions = (
             ('setar_nfe', 'Usuario pode alterar parametro NF-e'),
