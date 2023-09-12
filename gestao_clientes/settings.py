@@ -36,6 +36,7 @@ ADMINS = [('rob', 'r@r.com'),]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    # responsável pela autenticação e autorização no Django
     'django.contrib.auth',
     'django.contrib.sites',
     'django.contrib.contenttypes',
