@@ -43,7 +43,11 @@ class MyView(View):
     '''
     def get(self, request, *args, **kwargs):
         response = render_to_response('home3.html')
+        # Setando um cookie com um valor que será enviado na respose
         response.set_cookie('color', 'blue', max_age=1000)
+        
+        # lendo um cookie da sessão pelo nome 
+        # nome color
         mycookie = request.COOKIES.get('color')
         print(mycookie)
         return response
