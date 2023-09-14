@@ -74,11 +74,14 @@ class PersonList(LoginRequiredMixin, ListView):
     '''
     model = Person
 
+    # sobrescrevendo o método get_context_data  
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
+        # ler a sessão a variável primeiro acesso
+        # se não existir passa false
         primeiro_acesso = self.request.session.get('primeiro_acesso', False)
 
+        # caso não tenha sido acessado salva mensagem na sessão
         if not primeiro_acesso:
             context['message'] = 'Seja bem vindo ao seu primeiro acesso hoje'
             self.request.session['primeiro_acesso'] = True
