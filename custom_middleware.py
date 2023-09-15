@@ -18,8 +18,10 @@ class AppMetaData(object):
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         if request.user.is_authenticated:
+            #define variavel session se autenticado
             request.session['app_message'] = 'Ola %s, seja bem vindo a nossa app' % request.user.username
         else:
+            # primeiro acesso
             request.session['app_message'] = 'Ola, seja bem vindo'
 
         return None
