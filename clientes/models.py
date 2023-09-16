@@ -47,6 +47,10 @@ class Person(models.Model):
             html_message=html_email,
             fail_silently=False,
         )
+        '''The fail_silently argument controls how the backend should 
+        handle errors. If fail_silently is True, 
+        exceptions during the email sending process will be silently ignored.
+        '''
 
         mail_admins(
             'Novo cliente cadastrado',
