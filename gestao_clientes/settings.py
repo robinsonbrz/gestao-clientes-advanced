@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrapform',
 
+    # responsável pela autenticação e autorização no Django com o Allauth
+    # redes sociais
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
