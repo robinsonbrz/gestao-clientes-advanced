@@ -1,4 +1,5 @@
 from django.db import models
+# envio de email django
 from django.core.mail import send_mail, mail_admins, send_mass_mail
 from django.template.loader import render_to_string
 
@@ -36,11 +37,13 @@ class Person(models.Model):
         data = {'cliente': self.first_name}
         plain_text = render_to_string('clientes/emails/novo_cliente.txt', data)
         html_email = render_to_string('clientes/emails/novo_cliente.html', data)
+
+        # envio de email a cada salvamento
         send_mail(
             'Novo cliente cadastrado',
             plain_text,
-            'django@gregorypacheco.com.br',
-            ['django@gregorypacheco.com.br'],
+            'django@rob.com.br',
+            ['django@rob.com.br'],
             html_message=html_email,
             fail_silently=False,
         )

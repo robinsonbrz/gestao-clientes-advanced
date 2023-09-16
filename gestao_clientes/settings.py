@@ -178,6 +178,8 @@ STATIC_URL = '/static/'
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+
+# configurações de e-mail
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = 25
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
