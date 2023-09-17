@@ -68,3 +68,24 @@ class Person(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+'''
+exemplo de conexão a uma tabela preexistente em um banco de dados
+uma tabela que já existia antes da aplicação django
+mas que precisamos conectar o Django a esta tabela
+CREATE TABLE MinhaTabela2(
+	id integer PRIMARY KEY,
+	nome text NOT NULL,
+	salario real NOT NULL
+);
+
+
+'''
+class TabelaPreexistente(models.Model):
+    nome = models.CharField(max_length=50)
+    salario = models.DecimalField(max_digits=5, decimal_places=2)
+    class Meta:
+        db_table = 'MinhaTabela2'
+
+    def __str__(self):
+        return self.nome
