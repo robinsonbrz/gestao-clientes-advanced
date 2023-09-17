@@ -85,6 +85,12 @@ class TabelaPreexistente(models.Model):
     nome = models.CharField(max_length=50)
     salario = models.DecimalField(max_digits=5, decimal_places=2)
     class Meta:
+        # ao Rodar o make migrations vai criar o migration dessa tabela que já esiste
+        # Ao tentar rodar o migrate va dar um erro pq a tabela já existe
+        # Vai tentar criar essa tabela
+        # Para resolver isso basta rodar python manage.py migrate --fake
+
+        # MinhaTabela2 é o nome da tabela que já existe no banco de dados
         db_table = 'MinhaTabela2'
 
     def __str__(self):
