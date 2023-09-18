@@ -60,10 +60,10 @@ class Person(models.Model):
         )
 
         message1 = (
-            'Subject here', 'Here is the message', 'django@gregorypacheco.com.br',
-            ['django@gregorypacheco.com.br',])
-        message2 = ('Another Subject', 'Here is another message', 'django@gregorypacheco.com.br',
-                    ['django@gregorypacheco.com.br',])
+            'Subject here', 'Here is the message', 'robinsonbrz@gmail.com',
+            ['robinsonbrz@gmail.com',])
+        message2 = ('Another Subject', 'Here is another message', 'robinsonbrz@gmail.com',
+                    ['robinsonbrz@gmail.com',])
         # send_mass_mail([message1, message2], fail_silently=False)
 
     def __str__(self):
