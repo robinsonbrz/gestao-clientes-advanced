@@ -7,6 +7,31 @@ from .forms import ItemPedidoForm
 
 
 class DashboardView(View):
+    """
+    View class for displaying a sales dashboard.
+
+    This view checks if the current user has the permission to view the dashboard.
+    If the user has the 'vendas.ver_dashboard' permission, they are granted access.
+    Otherwise, an 'Acesso negado' message is displayed.
+
+    The dashboard displays various statistics related to sales orders, including the
+    average, average with discounts, minimum, maximum, and counts of orders.
+
+    Attributes:
+        None
+
+    Methods:
+        - dispatch(self, request, *args, **kwargs): Checks user permissions and grants
+          or denies access.
+        - get(self, request): Retrieves and displays sales statistics on the dashboard.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The rendered HTML response displaying the sales dashboard
+        or an access denied message.
+    """
     # sobrescrevendo o método dispatch que é o primeiro da class based view
     # para que ele faça a verificação de permissão do usuario
     def dispatch(self, request, *args, **kwargs):
@@ -31,6 +56,28 @@ class DashboardView(View):
         return render(request, 'vendas/dashboard.html', data)
 
 
+    """
+    View class for handling new sales order creation.
+
+    GET: Renders the 'novo-pedido.html' template to display a new sales order form.
+
+    POST: Processes the submitted form data, updates or creates a sales order,
+    and renders the 'novo-pedido.html' template with the updated order details.
+
+    Attributes:
+        None
+
+    Methods:
+        - get(self, request): Renders the new sales order form.
+        - post(self, request): Processes the form data, updates or creates a sales order,
+        and renders the form with updated order details.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The rendered HTML response containing the sales order form or order details.
+    """
 class NovoPedido(View):
     def get(self, request):
         return render(request, 'vendas/novo-pedido.html')
