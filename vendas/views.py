@@ -79,30 +79,30 @@ class NovoPedido(View):
     Returns:
         HttpResponse: The rendered HTML response containing the sales order form or order details.
     """
-    # def get(self, request):
-    #     return render(request, 'vendas/novo-pedido.html')
+    def get(self, request):
+        return render(request, 'vendas/novo-pedido.html')
 
-    # def post(self, request):
-    #     data = {}
-    #     data['form_item'] = ItemPedidoForm()
-    #     data['numero'] = request.POST['numero']
-    #     data['desconto'] = float(request.POST['desconto'].replace(',', '.'))
-    #     data['venda_id'] = request.POST['venda_id']
+    def post(self, request):
+        data = {}
+        data['numero'] = request.POST['numero']
+        data['form_item'] = ItemPedidoForm()
+        data['venda_id'] = request.POST['venda_id']
+        data['desconto'] = float(request.POST['desconto'].replace(',', '.'))
 
-    #     if data['venda_id']:
-    #         venda = Venda.objects.get(id=data['venda_id'])
-    #         venda.desconto = data['desconto']
-    #         venda.numero = data['numero']
-    #         venda.save()
-    #     else:
-    #         venda = Venda.objects.create(
-    #             numero=data['numero'], desconto=data['desconto'])
+        if data['venda_id']:
+            venda = Venda.objects.get(id=data['venda_id'])
+            venda.numero = data['numero']
+            venda.desconto = data['desconto']
+            venda.save()
+        else:
+            venda = Venda.objects.create(
+                numero=data['numero'], desconto=data['desconto'])
 
-    #     itens = venda.itemdopedido_set.all()
-    #     data['venda'] = venda
-    #     data['itens'] = itens
-    #     return render(
-    #         request, 'vendas/novo-pedido.html', data)
+        itens = venda.itemdopedido_set.all()
+        data['itens'] = itens
+        data['venda'] = venda
+        return render(
+            request, 'vendas/novo-pedido.html', data)
 
 
 class NovoItemPedido(View):
@@ -117,8 +117,8 @@ class NovoItemPedido(View):
 
         data['item'] = item
         data['form_item'] = ItemPedidoForm()
-        data['numero'] = item.venda.numero
         data['desconto'] = item.venda.desconto
+        data['numero'] = item.venda.numero
         data['venda'] = item.venda
         data['itens'] = item.venda.itemdopedido_set.all()
 
