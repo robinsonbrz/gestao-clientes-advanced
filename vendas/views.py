@@ -56,6 +56,7 @@ class DashboardView(View):
         return render(request, 'vendas/dashboard.html', data)
 
 
+class NovoPedido(View):
     """
     View class for handling new sales order creation.
 
@@ -78,31 +79,30 @@ class DashboardView(View):
     Returns:
         HttpResponse: The rendered HTML response containing the sales order form or order details.
     """
-class NovoPedido(View):
-    def get(self, request):
-        return render(request, 'vendas/novo-pedido.html')
+    # def get(self, request):
+    #     return render(request, 'vendas/novo-pedido.html')
 
-    def post(self, request):
-        data = {}
-        data['form_item'] = ItemPedidoForm()
-        data['numero'] = request.POST['numero']
-        data['desconto'] = float(request.POST['desconto'].replace(',', '.'))
-        data['venda_id'] = request.POST['venda_id']
+    # def post(self, request):
+    #     data = {}
+    #     data['form_item'] = ItemPedidoForm()
+    #     data['numero'] = request.POST['numero']
+    #     data['desconto'] = float(request.POST['desconto'].replace(',', '.'))
+    #     data['venda_id'] = request.POST['venda_id']
 
-        if data['venda_id']:
-            venda = Venda.objects.get(id=data['venda_id'])
-            venda.desconto = data['desconto']
-            venda.numero = data['numero']
-            venda.save()
-        else:
-            venda = Venda.objects.create(
-                numero=data['numero'], desconto=data['desconto'])
+    #     if data['venda_id']:
+    #         venda = Venda.objects.get(id=data['venda_id'])
+    #         venda.desconto = data['desconto']
+    #         venda.numero = data['numero']
+    #         venda.save()
+    #     else:
+    #         venda = Venda.objects.create(
+    #             numero=data['numero'], desconto=data['desconto'])
 
-        itens = venda.itemdopedido_set.all()
-        data['venda'] = venda
-        data['itens'] = itens
-        return render(
-            request, 'vendas/novo-pedido.html', data)
+    #     itens = venda.itemdopedido_set.all()
+    #     data['venda'] = venda
+    #     data['itens'] = itens
+    #     return render(
+    #         request, 'vendas/novo-pedido.html', data)
 
 
 class NovoItemPedido(View):
