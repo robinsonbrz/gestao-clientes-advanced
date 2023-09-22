@@ -26,8 +26,8 @@ form.cleaned_data['gender'] = 'M'
 
 if form.is_valid():
     print(form.cleaned_data)
-Use code with caution. Learn more
-Este código irá gerar o seguinte formulário HTML:
+
+Utilize o código para gerar o seguinte formulário HTML:
 
 HTML
 <form action="/" method="post">
@@ -38,5 +38,9 @@ HTML
     </select>
     <input type="submit" value="Enviar">
 </form>
+
+
+
+
 
 '''
