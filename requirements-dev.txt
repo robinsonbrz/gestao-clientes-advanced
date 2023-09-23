@@ -15,6 +15,9 @@ s3transfer==0.1.13
 six==1.11.0
 static3==0.7.0
 django-debug-toolbar
+pytest==7.4.2
+coverage==7.2.1
+pytest-cov==4.0.0
 
 # responsável pela autenticação e autorização no Django com o Allauth
 # redes sociais

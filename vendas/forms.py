@@ -12,6 +12,8 @@ class MyForm(forms.Form):
     name = forms.CharField(max_length=100)
     gender = forms.ChoiceField(choices=[('M', 'Masculino'), ('F', 'Feminino')])
 
+    
+
 '''
 # Exemplo de uso:
 
