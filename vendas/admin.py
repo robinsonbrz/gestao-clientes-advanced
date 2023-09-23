@@ -30,7 +30,7 @@ class VendaAdmin(admin.ModelAdmin):
     adicionando m2m com produtos em admin
     
     '''
-    filter_vertical = ['produtos']
+    # filter_vertical = ['produtos']
 
 
     def total(self, obj):
