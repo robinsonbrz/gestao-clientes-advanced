@@ -183,6 +183,15 @@ class ProdutoBulk(View):
 
 
 def api(request):
+    """
+    Returns a JSON response containing a list of dictionaries representing 'Produto' objects from the database.
+
+    :param request: The HTTP request object.
+    :type request: HttpRequest
+    :return: A JSON response with a list of dictionaries representing 'Produto' objects.
+    :rtype: JsonResponse
+    """
+
     a = {'nome': 'Gregory', 'idade': 29, 'salario': 500}
     mensagem = {'mensagem': 'erro xyz'}
     lista = [1, 2, 3]
