@@ -19,6 +19,9 @@ from django.urls import reverse_lazy
 
 @login_required
 def persons_list(request):
+    # Possível implementar um filtro aqui
+    # Recebendo de um request.GET.get()
+    # mas precisamos criar um form no front
     persons = Person.objects.all()
 
     return render(
