@@ -41,6 +41,14 @@ class DashboardView(View):
         return super(DashboardView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request):
+        """
+        Retrieves sales statistics from the database and renders them on the sales dashboard template.
+
+        :param request: The HTTP request object.
+        :type request: HttpRequest
+        :return: The rendered HTML response displaying the sales dashboard with the retrieved sales statistics.
+        :rtype: HttpResponse
+        """
         data = {}
         '''
         Foram criados managers em managers.py que chamam aggregates min, sum, avg
@@ -106,10 +114,28 @@ class NovoPedido(View):
 
 
 class NovoItemPedido(View):
+    """
+    Handles the creation of a new item in a sales order.
+
+    Methods:
+    - get(self, request, pk): Handles GET requests and does nothing.
+    - post(self, request, venda): Handles POST requests and creates a new item in the sales order.
+    """
+
     def get(self, request, pk):
         pass
 
     def post(self, request, venda):
+        """
+        Handles POST requests and creates a new item in the sales order.
+
+        Args:
+        - request: The HTTP request object.
+        - venda: The ID of the sales order.
+
+        Returns:
+        - A rendered template with the updated sales order information.
+        """
         data = {}
         item = ItemDoPedido.objects.create(
             produto_id=request.POST['produto_id'], quantidade=request.POST['quantidade'],
@@ -133,7 +159,24 @@ class ListaVendas(View):
 
 
 class EditPedido(View):
+    """
+    A Django view that handles the GET request for editing a specific Venda object.
+    
+    Methods:
+    - get(self, request, venda): Handles the GET request and retrieves the necessary data from the database.
+    """
+    
     def get(self, request, venda):
+        """
+        Handles the GET request and retrieves the necessary data from the database.
+        
+        Args:
+        - request: The HTTP request object.
+        - venda: The id of the Venda object to be edited.
+        
+        Returns:
+        - The rendered template for editing the Venda object.
+        """
         data = {}
         venda = Venda.objects.get(id=venda)
         data['form_item'] = ItemPedidoForm()
