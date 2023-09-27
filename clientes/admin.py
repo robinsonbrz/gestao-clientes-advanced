@@ -6,7 +6,9 @@ class PersonAdmin(admin.ModelAdmin):
     # podemos utilizar o fieldsets para organizar os campos do model
     # agrupados e com opção de colapse
     fieldsets = (
+        # agrupamentos de dados pessoais
         ('Dados pessoais', {'fields': ('first_name', 'last_name', 'doc', 'telefone')}),
+        # agrupamentos de dados complemetares
         ('Dados complementares', {
             'classes': ('collapse',),
             'fields': ('age', 'salary', 'photo')
